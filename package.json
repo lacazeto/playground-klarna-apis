@@ -1,0 +1,24 @@
+{
+  "name": "cs-excellence-training",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bootstrap": "npm install && lerna bootstrap",
+    "dev": "lerna run --parallel dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "lerna": "^3.22.1",
+    "prettier": "2.2.1"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "trailingComma": "es5",
+    "semi": true
+  }
+}
