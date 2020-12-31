@@ -1,0 +1,22 @@
+{
+  "purchase_country": "DE",
+  "purchase_currency": "EUR",
+  "locale": "de-DE",
+  "order_amount": 499,
+  "order_tax_amount": 0,
+  "order_lines": [
+    {
+      "type": "physical",
+      "reference": "19-402",
+      "name": "Battery Power Pack",
+      "quantity": 1,
+      "unit_price": 499,
+      "tax_rate": 0,
+      "total_amount": 499,
+      "total_discount_amount": 0,
+      "total_tax_amount": 0,
+      "image_url": "https://www.example.com/logo.png",
+      "product_url": "https://www.example.com/products/f2a8d7e34"
+    }
+  ]
+}

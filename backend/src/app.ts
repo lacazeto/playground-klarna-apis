@@ -1,5 +1,6 @@
 import express from "express";
 import * as bodyParser from "body-parser";
+import * as routes from "./routes";
 
 const app = express();
 
@@ -13,4 +14,6 @@ app.use(
 );
 
 app.get("/", (req, res) => res.send("Hello World!"));
+app.use("/session", routes.session);
+
 export { app };
