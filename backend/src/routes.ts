@@ -1,1 +1,1 @@
-export { default as session } from "./api/klarnaSession";
+export { default as kpSession } from "./api/kpSession";

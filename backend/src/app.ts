@@ -19,6 +19,6 @@ app.use(
 );
 
 app.get("/", (req, res) => res.send("Hello World!"));
-app.use("/session", routes.session);
+app.use("/kp/session", routes.kpSession);
 
 export { app };
