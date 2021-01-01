@@ -5,9 +5,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-// import KPIndex from "./pages/kp/index";
+import KPIndex from "./pages/kp/index";
 import Copyright from "./components/Copyright";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/notFound";
 import "./App.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -46,8 +46,7 @@ function App(): React.ReactElement {
           <Switch>
             <Route exact path="/"></Route>
             <Route path="/kp">
-              {/* <KPIndex /> */}
-              TO BE DONE
+              <KPIndex />
             </Route>
             <Route path="*">
               <NotFound />
