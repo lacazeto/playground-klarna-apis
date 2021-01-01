@@ -4,9 +4,9 @@ import Button from "@material-ui/core/Button";
 const noop = () => undefined;
 
 type Props = {
-  disabled?: boolean;
   children: React.ReactElement | string;
-  action?: () => void;
+  disabled?: boolean;
+  action?: (event: unknown) => void;
 };
 
 export default function KlarnaButton({ disabled = false, children, action = noop }: Props): React.ReactElement {

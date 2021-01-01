@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import Checkout from "./checkout";
 import Payments from "./payments";
+import NotFound from "../../pages/notFound";
+
 // import PurchaseSuccess from "./purchaseSuccess";
 
 export default function KPIndex(): React.ReactElement {
@@ -15,6 +17,9 @@ export default function KPIndex(): React.ReactElement {
           {/* <Checkout /> */}
         </Route>
         <Route path="/kp/order/:order_id/confirmed">{/* <PurchaseSuccess /> */}</Route>
+        <Route path="*">
+          <NotFound />
+        </Route>
       </Switch>
     </Router>
   );

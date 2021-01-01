@@ -1,11 +1,13 @@
 import express from "express";
 import axios from "axios";
+
 import mockedShoppingCart from "../mocks/shoppingCart.json";
 
 const router = express.Router();
 
 router.post("/", (req, res) => {
   const { body } = req;
+  const { credentials } = body;
   let data;
 
   if (body?.data) {
@@ -21,8 +23,8 @@ router.post("/", (req, res) => {
     method: "post",
     withCredentials: true,
     auth: {
-      username: process.env.MERCHANT_USERNAME as string,
-      password: process.env.MERCHANT_PASSWORD as string,
+      username: credentials.username || (process.env.MERCHANT_USERNAME as string),
+      password: credentials.password || (process.env.MERCHANT_PASSWORD as string),
     },
     data: data,
   })

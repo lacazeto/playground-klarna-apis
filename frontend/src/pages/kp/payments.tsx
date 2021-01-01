@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+import React, { FormEvent, useState } from "react";
 import { Box, Typography, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
@@ -21,12 +21,15 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function Payments(): React.ReactElement {
+  const [credentials, setCredentials] = useState({ username: "", password: "" });
+
   const classes = useStyles();
 
   const submitAction = (event: FormEvent) => {
+    console.log(credentials);
     event.preventDefault();
     axios
-      .post("/kp/session")
+      .post("/kp/session", credentials && { credentials })
       .then((res) => {
         console.log(res);
       })
@@ -37,10 +40,24 @@ export default function Payments(): React.ReactElement {
 
   return (
     <Box className={classes.box}>
-      <Typography> MID: PK23073</Typography>
+      <Typography> Enter Your Klarna Credentials</Typography>
       <form onSubmit={submitAction} className={classes.form} noValidate autoComplete="off">
-        <TextField className={classes.input} label="Merchant Username" variant="outlined" />
-        <TextField className={classes.input} label="Merchant Password" variant="outlined" />
+        <TextField
+          className={classes.input}
+          type="string"
+          name="username"
+          label="Merchant Username"
+          variant="outlined"
+          onChange={(event) => setCredentials({ ...credentials, username: event.target.value })}
+        />
+        <TextField
+          className={classes.input}
+          type="string"
+          name="password"
+          label="Merchant Password"
+          variant="outlined"
+          onChange={(event) => setCredentials({ ...credentials, password: event.target.value })}
+        />
         <KlarnaButton>Submit</KlarnaButton>
       </form>
     </Box>
