@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import Checkout from "./checkout";
-import Payments from "./payments";
-import NotFound from "../../pages/notFound";
+import Payments from "./Payments";
+import NotFound from "../notFound";
 
 // import PurchaseSuccess from "./purchaseSuccess";
 
