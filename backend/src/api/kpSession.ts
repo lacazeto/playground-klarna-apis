@@ -1,5 +1,6 @@
 import express from "express";
 import axios from "axios";
+import {KPSessionCreationResponse} from "../types/klarnaPayments"
 
 import mockedShoppingCart from "../mocks/shoppingCart.json";
 
@@ -29,7 +30,8 @@ router.post("/", (req, res) => {
     data: data,
   })
     .then((response) => {
-      res.json(response.data);
+      const { data } : KPSessionCreationResponse = response
+      res.json(data);
     })
     .catch((error) => {
       console.log(error, error.response.data.error_messages);
