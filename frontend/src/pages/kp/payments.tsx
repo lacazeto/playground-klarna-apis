@@ -1,15 +1,15 @@
 import React, { FormEvent, useState } from "react";
 import { Box, Typography, TextField, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import axios from "axios";
+import { getSession } from "../../utils/apis";
 import KlarnaButton from "../../components/KlarnaButton";
-import { KPSessionCreationResponse, PaymentMethods } from "@cs/training-be/src/types/klarnaPayments";
+import { PaymentMethods } from "@cs/training-be/src/types/klarnaPayments";
 
 const useStyles = makeStyles(() => ({
   box: {
     padding: "5px",
     width: "35%",
-    minWidth: "250px",
+    minWidth: "500px",
   },
   form: {
     display: "flex",
@@ -32,21 +32,13 @@ export default function Payments(): React.ReactElement {
   const [credentials, setCredentials] = useState({ username: "", password: "" });
   const [payments, setPayments] = useState<PaymentMethods>();
 
-
   const classes = useStyles();
 
-  const submitAction = (event: FormEvent) => {
+  const submitAction = async (event: FormEvent) => {
     event.preventDefault();
-    axios
-      .post("/kp/session", credentials && { credentials })
-      .then((res) => {
-        const { data } : KPSessionCreationResponse = res;
-        console.log(data);
-        setPayments(data.payment_method_categories)
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const session = await getSession(credentials);
+
+    if (session) setPayments(session.payment_method_categories);
   };
 
   const parsePaymentsNames = (payments: PaymentMethods) => {
