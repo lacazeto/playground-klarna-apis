@@ -3,6 +3,7 @@ import { Box, Typography, TextField, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { getSession } from "../../utils/apis";
 import KlarnaButton from "../../components/KlarnaButton";
+import DebugSidePanel from "../../components/DebugSidePanel";
 import { PaymentMethods } from "@cs/training-be/src/types/klarnaPayments";
 
 const useStyles = makeStyles(() => ({
@@ -26,7 +27,7 @@ const useStyles = makeStyles(() => ({
   list: {
     padding: "5px",
   },
-  h5: {
+  header: {
     overflowX: "hidden",
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
@@ -67,18 +68,6 @@ export default function Payments(): React.ReactElement {
     );
   };
 
-  const SidePanel = (): React.ReactElement => {
-    return (
-      <Box className={classes.box} p={3}>
-        <strong>
-          <i>Session Values:</i>
-        </strong>
-        <h5 className={classes.h5}><i>Session ID: {sessionId}</i></h5>
-        <h5 className={classes.h5}><i>Client Token: {clientToken}</i></h5>
-      </Box>
-    );
-  };
-
   return (
     <Box display="flex" justifyContent="space-between">
       <Box className={classes.box}>
@@ -103,13 +92,13 @@ export default function Payments(): React.ReactElement {
           <KlarnaButton>Submit</KlarnaButton>
         </form>
         <Box mt={5} mb={5} display="flex">
-          <small>Click Submit to list all available Payments for this MID in Germany: </small>
+          <small>Click Submit to list all available Payments in Germany: </small>
           <Paper elevation={0} variant="outlined" className={classes.apiResponse}>
             {parsePaymentsNames(payments)}
           </Paper>
         </Box>
       </Box>
-      {SidePanel()}
+      <DebugSidePanel sessionId={sessionId} clientToken={clientToken} />
     </Box>
   );
 }
